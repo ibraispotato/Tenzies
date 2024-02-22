@@ -139,8 +139,8 @@
 }
 @media(max-width:414px){
     .container{
-        width: 98%;
-        transform: translate(2%,30%);
+        width: 90%;
+        transform: translate(5%,30%);
     }
     .h1{
         width: 48px;
@@ -148,7 +148,7 @@
         /* font-size: 16px; */
     }
     .dice{
-        width: 374px;
+        width: 400px;
     }
 
 }
