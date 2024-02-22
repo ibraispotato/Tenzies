@@ -15,7 +15,7 @@
     gap: 30px;
     
    /* flex-direction: column; */
-    width: 356px;
+    width: 381px;
     margin-bottom: 20px;
    
 }
@@ -24,27 +24,35 @@
 }
 .h1{
     background-color: rgb(127, 229, 255);
-    color: white;
-    width: 50px;
+    color: black;
+    width: 55px;
     text-align: center;
     margin: 10px;
-    height: 50px;
-    font-size: 25px;
-    font-weight: 700;
+    height: 55px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 550px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: 0.4s;
 }
+.times{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 190px;
+    text-align: center;
+}
 .h2{
     background-color: rgb(0, 112, 139);
     color: white;
-    width: 50px;
+    width: 55px;
     text-align: center;
     margin: 10px;
-    height: 50px;
-    font-size: 25px;
-    font-weight: 700;
+    height: 55px;
+    font-size: 40px;
+    font-weight: 550;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -69,13 +77,33 @@
     background-color: rgb(0, 131, 163);
     color: white;
 }
+@media(min-width:375px){
+   
+    .h1{
+        width: 48px;
+        height: 56px;
+        
+    }
+    .dice{
+        margin-left: 40px;
+    }
+    .h2{
+        width: 48px;
+        height: 56px;
+    }
+}
+
 @media(max-width:767px){
     .container{
         width: 90%;
         transform: translate(5%,50%);
     }
+    .timeres{
+        font-size: 19px;
+    }
     
 }
+
 @media(min-width:768px){
     .container{
         width: 80%;
@@ -90,21 +118,37 @@
     transform: translate(50%,50%);
     }
 }
-@media(max-width:375px){
+
+@media(max-width:320px){
     .container{
-        width: 100%;
+        width: 110%;
         transform: translate(7%,50%);
     }
     .h1{
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 56px;
         
     }
     .dice{
         margin-left: 40px;
     }
     .h2{
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 56px;
     }
+}
+@media(max-width:414px){
+    .container{
+        width: 98%;
+        transform: translate(2%,30%);
+    }
+    .h1{
+        width: 48px;
+        height: 56px;
+        /* font-size: 16px; */
+    }
+    .dice{
+        width: 374px;
+    }
+
 }

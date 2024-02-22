@@ -5,8 +5,8 @@ import { useStateContext } from "../tensizcontext/tensiz";
 
 import "./tensizes.css"
 function Ten() {
-    const {text, setText, newText, setNewText, newes, removes, arr, rans,restart } = useStateContext()
-   
+    const {text, setText, newText, setNewText,timer, newes, removes, arr, rans,restart,bole,count,setCount,Count } = useStateContext()
+//    console.log(newText)
     return (
         <div className="container">
             <div className="topText">
@@ -17,7 +17,7 @@ function Ten() {
                 
             </div>
             <div className="dice">
-                <div className="insidedice">
+                <div className="">
                 {text.map((data,id) => (
                     
                     <button onClick={() => arr.includes(data.id) ? removes(data.id) : newes(data)} value={data} className={`${arr.includes(data.id) ? "h2" : "h1"}`}>{arr.includes(data.id) ?
@@ -32,9 +32,13 @@ function Ten() {
             </div>
             <div>
                 
-                <button className="roll" onClick={newText.length === 10 ? restart : rans}>{newText.length === 10 ?"Restart":"Roll"}</button>
-                
-                
+                <button className="roll" onClick={newText.length === 10 ?bole===true ? restart : console.log("omg") : rans}>{newText.length === 10 ? bole===true ?"Restart":"Wrong dice":"Roll"}</button>
+                {/* <button className="roll" onClick={Count}>ssss</button> */}
+               
+            </div>
+            <div className="times">
+                <h1 className="timeres">{`Your rolls: ${count}`}</h1>
+                <h1 className="timeres">{`Time : ${timer}`}</h1>
             </div>
         </div>
     )
