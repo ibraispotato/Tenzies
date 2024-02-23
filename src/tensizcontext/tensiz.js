@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext,useContext } from "react";
+import React, { useState, useEffect, createContext,useContext, useRef } from "react";
 
 
 export const Context = createContext()
@@ -9,11 +9,43 @@ export const GetContext = ({ children }) => {
     const [count,setCount]= useState(-1)
         const roll= ["⚀","⚁","⚂","⚃","⚄","⚅"]
     const [timer, setTimer] = useState(0)
+    const [isActive, setIsActive] = useState(false);
+    const [isPaused, setIsPaused] = useState(true);
+   useEffect(() => {
+        let interval = null;
+ 
+        if (isActive && isPaused === false) {
+            interval = setInterval(() => {
+                setTimer((time) => time + 1);
+            }, 1000);
+        } else {
+            clearInterval(interval);
+       }
+     
+        return () => {
+            clearInterval(interval);
+       };
+       
+    }, [isActive, isPaused]);
+ 
     const rans = (els) => {
         setText(text.map(el => ({ id: el.id, num: roll[Math.floor(Math.random() * roll.length)], click: false })))
-        setCount(count+1)
-        newText.length === 0 ? count === 0 ? setInterval(() => setTimer(prev => prev + 1), 1000) : console.log("d") : console.log("d")
+        setCount(count + 1)
+        // setIsActive(true);
+        
+        setIsPaused(false);
+        newText.length === 0 ? count === 0 ? setIsActive(true) : console.log("d") : console.log("d")
     }
+    const format = (time) => {
+        let hours = Math.floor(time/60/60%24)
+        let minuts = Math.floor(time/60%60)
+        let secounds = Math.floor(time%60)
+        hours = hours < 10 ? "0" + hours : hours
+        minuts = minuts<10?"0"+minuts : minuts
+        secounds = secounds<10?"0"+secounds : secounds
+        return hours + ":" + minuts + ":" + secounds
+    }
+
     let one = newText.map((el, index) => el.num)
     const bole = new Set(one).size == 1
     useEffect(() => {
@@ -84,7 +116,11 @@ export const GetContext = ({ children }) => {
     const newes = (id,d) => {
         if (newText.indexOf(id)!==-1) return 
         setNewText([...newText, id])
-        newText.length===0? count===0?setInterval(()=>setTimer(prev=>prev+1),1000):console.log("d"):console.log("d")
+        setIsActive(true);
+        setIsPaused(false);
+        
+        bole ?setIsPaused(!isPaused) : console.log("d")
+        newText.length===0? count===0?setIsActive(true):console.log("d"):console.log("d")
     }
     const removes =  (ids) => {
             setNewText(newText.filter(text => text.id!==ids))
@@ -95,11 +131,12 @@ export const GetContext = ({ children }) => {
         setText(text.map(el => ({ id: el.id, num: roll[Math.floor(Math.random() * roll.length)], click: false })))
         setCount(0)
         setTimer(0)
-        
+        setIsActive(false);
+        setIsPaused(!isPaused);
     }
    
     return (
-        <Context.Provider value={{timer,text,setText,newText,setNewText,newes,removes,arr,rans,restart,bole,count,setCount}}>
+        <Context.Provider value={{timer,text,setText,newText,setNewText,format,newes,removes,arr,rans,restart,bole,count,setCount}}>
             {children}
         </Context.Provider>
     )

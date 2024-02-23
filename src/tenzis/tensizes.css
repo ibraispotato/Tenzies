@@ -81,7 +81,7 @@
 @media(min-width:320px){
     .container{
         width: 100%;
-        transform: translate(2%,40%);
+        transform: translate(2%,30%);
     }
     .h1{
         width: 44px;
@@ -99,7 +99,7 @@
     }
     .times{
         gap: 150px;
-        font-size: 12px;
+        font-size: 10px;
     }
 }
 @media(min-width:475px){
@@ -151,6 +151,9 @@
         width: 80px;
         height: 62px;
         
+    }
+    .times{
+        font-size: 12px;
     }
 }
 @media(min-width:1024px){

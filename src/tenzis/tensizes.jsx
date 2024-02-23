@@ -5,7 +5,7 @@ import { useStateContext } from "../tensizcontext/tensiz";
 
 import "./tensizes.css"
 function Ten() {
-    const {text, setText, newText, setNewText,timer, newes, removes, arr, rans,restart,bole,count,setCount,Count } = useStateContext()
+    const {text, setText, newText,running, setRunning,time, setNewText,timer,format, newes, removes, arr, rans,restart,bole,count,setCount,Count } = useStateContext()
 //    console.log(newText)
     return (
         <div className="container">
@@ -38,7 +38,7 @@ function Ten() {
             </div>
             <div className="times">
                 <h1 className="timeres">{`Your rolls: ${count}`}</h1>
-                <h1 className="timeres">{`Time : ${timer}`}</h1>
+                <h1 className="timeres">{`Time : ${format(timer)}`}</h1>
             </div>
         </div>
     )
